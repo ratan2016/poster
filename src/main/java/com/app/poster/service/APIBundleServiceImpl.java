@@ -36,13 +36,13 @@ public class APIBundleServiceImpl implements IAPIBundleService {
 
 	@Override
 	public void delete(APIBundle apiBundle) {
-		apiBundleDAO.delete(apiBundle);
+		apiBundleDAO.delete(apiBundle.getId());
 
 	}
 
 	@Override
 	public APIBundle read(APIBundle apiBundle) {
-		return apiBundleDAO.read(apiBundle);
+		return apiBundleDAO.read(apiBundle.getId());
 	}
 
 	@Override

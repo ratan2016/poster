@@ -9,9 +9,9 @@ public interface IAPIBundleDAO {
 
 	void modify(APIBundle apiBundle);
 
-	void delete(APIBundle apiBundle);
+	void delete(Integer id);
 
-	APIBundle read(APIBundle apiBundle);
+	APIBundle read(Integer id);
 
 	List<APIBundle> readAll();
 }

@@ -12,11 +12,11 @@ public interface IAPIDocumentDAO {
 
 	void modifyWithContent(APIDocument apiBundle);
 
-	void delete(APIDocument apiBundle);
+	void delete(Integer id);
 
-	APIDocument read(APIDocument apiDocument);
+	APIDocument read(Integer id);
 
 	List<APIDocument> readAll();
 
-	List<APIDocument> readPerApplication(APIBundle apiBundle);
+	List<APIDocument> readPerApplication(Integer apiBundleId);
 }

@@ -44,13 +44,13 @@ public class APIDocumentServiceImpl implements IAPIDocumentService {
 
 	@Override
 	public void delete(APIDocument apiDocument) {
-		apiDocumentDAO.delete(apiDocument);
+		apiDocumentDAO.delete(apiDocument.getId());
 
 	}
 
 	@Override
 	public APIDocument read(APIDocument apiDocument) {
-		return apiDocumentDAO.read(apiDocument);
+		return apiDocumentDAO.read(apiDocument.getId());
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class APIDocumentServiceImpl implements IAPIDocumentService {
 	@Override
 	public List<APIDocument> readPerApplication(APIBundle apiBundle) {
 		
-		return apiDocumentDAO.readPerApplication(apiBundle);
+		return apiDocumentDAO.readPerApplication(apiBundle.getId());
 	}
 
 }

@@ -33,14 +33,7 @@ public class APIBundleController {
 		return model;
 	}
 
-	@RequestMapping(value = {"/","/index"}, method = RequestMethod.GET)
-	public ModelAndView home(ModelAndView model) {
-		List<APIBundle> apiBundleList = apiBundleService.readAll();
-		model.addObject("apiBundleList", apiBundleList);
-		model.setViewName("index");
-		return model;
-	}
-
+	
 	@RequestMapping(value = "/applications", method = RequestMethod.GET)
 	public ModelAndView application(ModelAndView model) {
 		model.setViewName("application");

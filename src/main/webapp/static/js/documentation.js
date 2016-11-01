@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 		var id = $(this).attr("id");
 		$.ajax({
-			url : "/poster/documents/" + id,
+			url : "/documents/" + id,
 			type : "GET",
 			success : function(result) {
 				$(".document-div").html(result);
@@ -26,7 +26,7 @@ function loadEditor(operation, id) {
 		"operation" : operation
 	};
 	$.ajax({
-		url : "/poster/editor",
+		url : "/editor",
 		data : JSON.stringify(json),
 		contentType : "application/json",
 		type : "POST",
@@ -42,7 +42,7 @@ function loadEditor(operation, id) {
 function loadSections() {
 	var applicationId = $("#applicationId").val();
 	$.ajax({
-		url : "/poster/loadSections/" + applicationId,
+		url : "/loadSections/" + applicationId,
 		type : "GET",
 		success : function(result) {
 
@@ -60,7 +60,7 @@ function reorderSections() {
 		json[$(span).attr("id")] = count + 1;
 	});
 	$.ajax({
-		url : "/poster/reorderSections/" + applicationId,
+		url : "/reorderSections/" + applicationId,
 		data : JSON.stringify(json),
 		contentType : "application/json",
 		type : "POST",
@@ -80,7 +80,7 @@ function deleteSection(sectionId) {
 		"id" : sectionId
 	};
 	$.ajax({
-		url : "/poster/deleteSection",
+		url : "/deleteSection",
 		data : JSON.stringify(json),
 		contentType : "application/json",
 		type : "POST",

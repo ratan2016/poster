@@ -24,7 +24,7 @@
 			var operation = $("#operation").val();
 			if (requiredField('sectionForm')) {
 				$.ajax({
-					url : "/poster/" + operation,
+					url : "/" + operation,
 					type : "POST",
 					data : JSON.stringify(json),
 					contentType : "application/json",

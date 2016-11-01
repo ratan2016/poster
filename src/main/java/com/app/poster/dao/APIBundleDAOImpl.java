@@ -1,90 +1,62 @@
 package com.app.poster.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Component;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.app.poster.model.APIBundle;
 
-@Component("apiBundleDAO")
+@Repository("apiBundleDAO")
 public class APIBundleDAOImpl implements IAPIBundleDAO {
 
-	@Autowired
-	JdbcTemplate jdbcTemplate;
-
-	public JdbcTemplate getJdbcTemplate() {
-		return jdbcTemplate;
-	}
-
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
+	@PersistenceContext
+	private EntityManager em;
 
 	@Override
+	@Transactional
 	public void create(APIBundle apiBundle) {
-		String sql = "INSERT INTO API_BOX "
-				+ "( BUNDLE_NAME, BUNDLE_DESCRIPTION) VALUES (?, ?)";
-		jdbcTemplate.update(sql, new Object[] { apiBundle.getBundleName(),
-				apiBundle.getBundleDescription() });
-
+		em.persist(apiBundle);
+		em.flush();
 	}
 
 	@Override
+	@Transactional
 	public void modify(APIBundle apiBundle) {
-		String sql = "UPDATE API_BOX "
-				+ "SET BUNDLE_NAME =?, BUNDLE_DESCRIPTION =? WHERE ID= ?";
-		jdbcTemplate.update(sql, new Object[] { apiBundle.getBundleName(),
-				apiBundle.getBundleDescription(), apiBundle.getId() });
+		em.merge(apiBundle);
 
 	}
 
 	@Override
-	public void delete(APIBundle apiBundle) {
-		String sql = "DELETE FROM API_BOX "
-				+ "WHERE ID= ?";
-		jdbcTemplate.update(sql, new Object[] { apiBundle.getId() });
+	@Transactional
+	public void delete(Integer id) {
+		APIBundle apiBundle = em.find(APIBundle.class, id);
+		em.remove(apiBundle);
 
 	}
 
 	@Override
-	public APIBundle read(APIBundle apiBundle) {
-		String sql = "SELECT ID,BUNDLE_NAME,BUNDLE_DESCRIPTION from API_BOX";
-		APIBundle apiBundleResult = new APIBundle();
-		apiBundleResult = jdbcTemplate
-				.queryForObject(sql, apiBundleRowMapper());
-		return apiBundleResult;
+	public APIBundle read(Integer id) {
+		return em.find(APIBundle.class, id);
 
 	}
 
 	@Override
 	public List<APIBundle> readAll() {
-		String sql = "SELECT ID,BUNDLE_NAME,BUNDLE_DESCRIPTION from API_BOX";
-		List<APIBundle> apiBundleList = new ArrayList<APIBundle>();
-		apiBundleList = jdbcTemplate.query(sql, apiBundleRowMapper());
-		return apiBundleList;
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<APIBundle> cq = cb.createQuery(APIBundle.class);
+		Root<APIBundle> rootEntry = cq.from(APIBundle.class);
+		CriteriaQuery<APIBundle> all = cq.select(rootEntry);
+		TypedQuery<APIBundle> allQuery = em.createQuery(all);
+		return allQuery.getResultList();
 	}
 
-	private RowMapper<APIBundle> apiBundleRowMapper() {
-		return new RowMapper<APIBundle>() {
-
-			public APIBundle mapRow(ResultSet result, int arg1)
-					throws SQLException {
-				APIBundle apiBundle = new APIBundle();
-				apiBundle.setId(result.getInt("ID"));
-				apiBundle.setBundleName(result.getString("BUNDLE_NAME"));
-				apiBundle.setBundleDescription(result
-						.getString("BUNDLE_DESCRIPTION"));
-
-				return apiBundle;
-			}
-
-		};
-	}
 
 }

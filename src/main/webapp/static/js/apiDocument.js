@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 	$.ajax({
-		url : "/poster/documents",
+		url : "/documents",
 		type : "GET",
 		success : function(result) {
 			$("#tableContent").html(result);
@@ -12,7 +12,7 @@ $(document).ready(function() {
 	$("#add").click(function() {
 		if (requiredField('apiDocumentForm')) {
 			$.ajax({
-				url : "/poster/addApi",
+				url : "/addApi",
 				type : "POST",
 				data : $("#apiDocumentForm").serialize(),
 				success : function(result) {
@@ -28,7 +28,7 @@ $(document).ready(function() {
 	$("#update").click(function() {
 		if (requiredField('apiDocumentForm')) {
 			$.ajax({
-				url : "/poster/modifyDocument",
+				url : "/modifyDocument",
 				type : "POST",
 				data : $("#apiDocumentForm").serialize(),
 				success : function(result) {
@@ -43,7 +43,7 @@ $(document).ready(function() {
 	$("#delete").click(function() {
 		if (requiredField('apiDocumentForm')) {
 			$.ajax({
-				url : "/poster/deleteApi",
+				url : "/deleteApi",
 				type : "POST",
 				data : $("#apiDocumentForm").serialize(),
 				success : function(result) {

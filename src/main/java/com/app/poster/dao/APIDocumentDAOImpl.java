@@ -1,121 +1,79 @@
 package com.app.poster.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Component;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
-import com.app.poster.model.APIBundle;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.app.poster.model.APIDocument;
 
-@Component("apiDocumentDAO")
+@Repository("apiDocumentDAO")
 public class APIDocumentDAOImpl implements IAPIDocumentDAO {
 
-	@Autowired
-	JdbcTemplate jdbcTemplate;
-
-	public JdbcTemplate getJdbcTemplate() {
-		return jdbcTemplate;
-	}
-
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
+	@PersistenceContext
+	private EntityManager em;
 
 	@Override
+	@Transactional
 	public void create(APIDocument apiDocument) {
-		String sql = "INSERT INTO API_DOCUMENT "
-				+ "( DOCUMENT_NAME, DOCUMENT_DESCRIPTION, API_BOX_ID) VALUES (?, ?, ?)";
-		jdbcTemplate.update(
-				sql,
-				new Object[] { apiDocument.getDocumentName(),
-						apiDocument.getDocumentDescription(),
-						apiDocument.getBundleId() });
+		em.persist(apiDocument);
+		em.flush();
 
 	}
 
 	@Override
+	@Transactional
 	public void modify(APIDocument apiDocument) {
-		String sql = "UPDATE API_DOCUMENT "
-				+ "SET DOCUMENT_NAME =?, DOCUMENT_DESCRIPTION =?, API_BOX_ID= ? WHERE ID= ?";
-		jdbcTemplate.update(sql, new Object[] { apiDocument.getDocumentName(),
-				apiDocument.getDocumentDescription(),
-				apiDocument.getBundleId(), apiDocument.getId() });
+		em.merge(apiDocument);
 
 	}
 
 	@Override
+	@Transactional
 	public void modifyWithContent(APIDocument apiDocument) {
-		String sql = "UPDATE API_DOCUMENT "
-				+ "SET DOCUMENT_CONTENT =? WHERE ID= ?";
-		jdbcTemplate.update(
-				sql,
-				new Object[] { apiDocument.getDocumentContent(),
-						apiDocument.getId() });
+		em.merge(apiDocument);
 
 	}
 
 	@Override
-	public void delete(APIDocument apiDocument) {
-		String sql = "DELETE FROM API_DOCUMENT " + "WHERE ID= ?";
-		jdbcTemplate.update(sql, new Object[] { apiDocument.getId() });
+	@Transactional
+	public void delete(Integer id) {
+		APIDocument apiDocument = em.find(APIDocument.class, id);
+		em.remove(apiDocument);
 
 	}
 
 	@Override
-	public APIDocument read(APIDocument apiDocument) {
-		String sql = "SELECT ID,DOCUMENT_NAME,DOCUMENT_DESCRIPTION, API_BOX_ID,DOCUMENT_CONTENT from API_DOCUMENT WHERE ID=?";
-		APIDocument apiDocumentResult = new APIDocument();
-		apiDocumentResult = jdbcTemplate.queryForObject(sql,
-				new Object[] { apiDocument.getId() },
-				apiDocumentRowMapper(true));
-		return apiDocumentResult;
+	public APIDocument read(Integer id) {
+		return em.find(APIDocument.class, id);
 
 	}
 
 	@Override
 	public List<APIDocument> readAll() {
-		String sql = "SELECT ID,DOCUMENT_NAME,DOCUMENT_DESCRIPTION, API_BOX_ID from API_DOCUMENT";
-		List<APIDocument> apiDocumentList = new ArrayList<APIDocument>();
-		apiDocumentList = jdbcTemplate.query(sql, apiDocumentRowMapper(false));
-		return apiDocumentList;
-	}
-
-	private RowMapper<APIDocument> apiDocumentRowMapper(
-			final boolean documentContent) {
-		return new RowMapper<APIDocument>() {
-
-			public APIDocument mapRow(ResultSet result, int arg1)
-					throws SQLException {
-				APIDocument apiDocument = new APIDocument();
-				apiDocument.setId(result.getInt("ID"));
-				apiDocument.setDocumentName(result.getString("DOCUMENT_NAME"));
-				apiDocument.setDocumentDescription(result
-						.getString("DOCUMENT_DESCRIPTION"));
-				apiDocument.setBundleId(result.getInt("API_BOX_ID"));
-				if (documentContent) {
-					String content = result.getString("DOCUMENT_CONTENT");
-					apiDocument.setDocumentContent(content);
-				}
-				return apiDocument;
-			}
-
-		};
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<APIDocument> cq = cb.createQuery(APIDocument.class);
+		Root<APIDocument> rootEntry = cq.from(APIDocument.class);
+		CriteriaQuery<APIDocument> all = cq.select(rootEntry);
+		TypedQuery<APIDocument> allQuery = em.createQuery(all);
+		return allQuery.getResultList();
 	}
 
 	@Override
-	public List<APIDocument> readPerApplication(APIBundle apiBundle) {
-		String sql = "SELECT ID,DOCUMENT_NAME,DOCUMENT_DESCRIPTION, API_BOX_ID from API_DOCUMENT WHERE API_BOX_ID=?";
-		List<APIDocument> apiDocumentList = new ArrayList<APIDocument>();
-		apiDocumentList = jdbcTemplate
-				.query(sql, new Object[] { apiBundle.getId() },
-						apiDocumentRowMapper(false));
-		return apiDocumentList;
+	public List<APIDocument> readPerApplication(Integer apiBundleId) {
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<APIDocument> query = cb.createQuery(APIDocument.class);
+		Root<APIDocument> rootEntry = query.from(APIDocument.class);
+		query.where(cb.equal(rootEntry.get("API_BOX_ID"), apiBundleId));
+		TypedQuery<APIDocument> allQuery = em.createQuery(query);
+		return allQuery.getResultList();
 	}
 
 }

@@ -1,16 +1,26 @@
 package com.app.poster.model;
 
-import java.io.StringWriter;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
-import com.mysql.jdbc.Clob;
-
+@Entity(name = "API_DOCUMENT")
 public class APIDocument {
-
+	@Id
+	@GeneratedValue
+	@Column(name = "ID")
 	private Integer id;
+	@Column(name = "DOCUMENT_NAME")
 	private String documentName;
+	@Column(name = "DOCUMENT_DESCRIPTION")
 	private String documentDescription;
+	@Column(name = "DOCUMENT_CONTENT")
 	private String documentContent;
+	@Transient
 	private Documentation documentation;
+	@Column(name = "API_BOX_ID")
 	private Integer bundleId;
 
 	public Integer getBundleId() {

@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 import com.app.poster.model.APIBundle;
 import com.app.poster.model.APIDocument;
-import com.mysql.jdbc.Clob;
 
 @Component("apiDocumentDAO")
 public class APIDocumentDAOImpl implements IAPIDocumentDAO {

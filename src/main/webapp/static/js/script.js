@@ -45,8 +45,11 @@ function showModel(title, modalBody, modalFooter) {
 
 	var body = $("<div>").addClass("modal-body").html(modalBody);
 	modalDiv.append(body);
+	
+	var modalDialog=$("<div>").addClass("modal-dialog");
+	modalDialog.append(modalDiv);
 
-	$("#popup").html(modalDiv).css("display", "block").addClass("in");
+	$("#popup").html(modalDialog).css("display", "block").addClass("in");
 	$("body").addClass("modal-open");
 	positionPopUp();
 }

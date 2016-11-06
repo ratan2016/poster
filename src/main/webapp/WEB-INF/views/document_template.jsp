@@ -4,10 +4,10 @@
 $(".document-div img").addClass("img-responsive").attr("align","middle");
 </script>
 <div class="row">
-	<div class="col-sm-9">
+	<div class="col-lg-9">
 		<h3>${resultDocument.documentName}</h3>
 	</div>
-	<div class="col-sm-3">
+	<div class="col-lg-3">
 		<div class="btn-group pull-right" role="group">
 			<h3>
 				<a href="#" onclick="loadEditor('createSection');" id="add"
@@ -27,7 +27,7 @@ $(".document-div img").addClass("img-responsive").attr("align","middle");
 </form>
 <hr />
 <div class="row">
-	<div class="col-sm-9">
+	<div class="col-lg-9">
 		<c:if test="${resultDocument.documentation eq null }">
 		Document content is not available.
 	</c:if>
@@ -38,13 +38,13 @@ $(".document-div img").addClass("img-responsive").attr("align","middle");
 	value="${resultDocument.documentation.sections}"></c:set>
 <c:forEach var="section" items="${sectionList}">
 
-	<div class="col-sm-9">
+	<div class="col-lg-9">
 		<h4 class="section-head">${section.sectionName}</h4>
 		<p>${section.sectionDetail}</p>
 
 
 	</div>
-	<div class="col-sm-3">
+	<div class="col-lg-3">
 		<div class="btn-group pull-right">
 			<a href="#" onclick='loadEditor("updateSection","${section.id}");'
 				id="update" title="Update Section"><span

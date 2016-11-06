@@ -57,7 +57,7 @@
 	initSample();
 </script>
 
-	<div class="row">
+	
 		<spring:form role="form" id="sectionForm" commandName="section">
 			<spring:hidden id="sectionId" path="id" />
 			<spring:hidden id="sectionDetail" path="sectionDetail" />
@@ -65,14 +65,14 @@
 			<input type="hidden" name="operation" id="operation"
 				value="${operation}" />
 			<div class="row">
-				<div class="form-group col-sm-6">
+				<div class="form-group col-lg-6">
 					<label for="sectionName">Section Name *</label>
 					<spring:input path="sectionName" id="sectionName"
 						required="required" class="form-control" />
 				</div>
 			</div>
 			<div class="row">
-				<div class="form-group col-sm-12">
+				<div class="form-group col-lg-12">
 					<label for="bundleName">Bundle Description</label>
 
 					<div contenteditable="true" id="editor"></div>
@@ -80,15 +80,14 @@
 			</div>
 			<div class="row">
 				<hr />
-				<div class="btn-group pull-right" role="group">
+				<div class="btn-group pull-right margin-right-15" role="group">
 					<button type="button" class="btn btn-primary" id="save">SAVE</button>
 					<!-- <button type="button" class="btn btn-default"
 						onclick="clearEntryForm();" id="clear">CLEAR</button> -->
 				</div>
 			</div>
 
-			<hr />
+			
 
 		</spring:form>
-	</div>
 

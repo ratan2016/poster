@@ -13,7 +13,7 @@
 		<div class="row">
 			<c:forEach var="api" items="${apiBundleList}">
 				<a href="documentation/${api.id}">
-					<div class="col-sm-3 cards">
+					<div class="col-lg-3 cards">
 						<h3>
 							<c:out value="${api.bundleName}" />
 						</h3>

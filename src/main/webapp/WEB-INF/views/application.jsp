@@ -12,27 +12,27 @@
 
 	<div class="container">
 		<h1>API Bundle</h1>
-		<div class="row">
 			<spring:form role="form" id="apiBundleForm" commandName="apiBundle">
 				<input type="hidden" id="id" name="id" />
 				<div class="row">
-					<div class="form-group col-sm-6">
+					<div class="form-group col-lg-6">
 						<label for="bundleName">Bundle name *</label>
 						<spring:input path="bundleName" id="bundleName"
 							required="required" placeholder="Enter Bundle Name"
 							class="form-control" />
 					</div>
 
-					<div class="form-group col-sm-6">
+					<div class="form-group col-lg-6">
 						<label for="bundleName">Bundle Description *</label>
 						<spring:input path="bundleDescription" id="bundleDescription"
 							required="required" placeholder="Enter Bundle Description"
 							class="form-control" />
 					</div>
 				</div>
-				<div class="row">
+				
 					<hr />
-					<div class="pull-right">
+					<div class="row">
+					<div class="pull-right margin-right-15">
 						<button type="button" class="btn btn-primary" id="add">
 							<span class="glyphicon glyphicon-plus"></span> ADD
 						</button>
@@ -50,10 +50,9 @@
 				<hr />
 
 			</spring:form>
-		</div>
 
 
-		<div class="row" id="tableContent">
+		<div id="tableContent">
 			<jsp:include page="applicationTable.jsp" />
 		</div>
 

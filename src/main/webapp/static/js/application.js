@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 	$.ajax({
-		url : "/bundles",
+		url :  "/bundles",
 		type : "GET",
 		success : function(result) {
 			$("#tableContent").html(result);
@@ -14,7 +14,7 @@ $(document).ready(function() {
 		var bundleDescription = $("bundleDescription").val();
 		if (requiredField('apiBundleForm')) {
 			$.ajax({
-				url : "/add",
+				url :  "/add",
 				type : "POST",
 				data : $("#apiBundleForm").serialize(),
 				success : function(result) {
@@ -32,7 +32,7 @@ $(document).ready(function() {
 		var bundleDescription = $("bundleDescription").val();
 		if (requiredField('apiBundleForm')) {
 			$.ajax({
-				url : "/modifyBundles",
+				url :  "/modifyBundles",
 				type : "POST",
 				data : $("#apiBundleForm").serialize(),
 				success : function(result) {
@@ -49,7 +49,7 @@ $(document).ready(function() {
 		var bundleDescription = $("bundleDescription").val();
 		if (requiredField('apiBundleForm')) {
 			$.ajax({
-				url : "/delete",
+				url :  "/delete",
 				type : "POST",
 				data : $("#apiBundleForm").serialize(),
 				success : function(result) {

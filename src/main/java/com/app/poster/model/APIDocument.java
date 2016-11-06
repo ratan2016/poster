@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Transient;
 
 @Entity(name = "API_DOCUMENT")
@@ -16,7 +17,7 @@ public class APIDocument {
 	private String documentName;
 	@Column(name = "DOCUMENT_DESCRIPTION")
 	private String documentDescription;
-	@Column(name = "DOCUMENT_CONTENT")
+	@Column(name = "DOCUMENT_CONTENT", length = 10485760)
 	private String documentContent;
 	@Transient
 	private Documentation documentation;

@@ -19,12 +19,16 @@
 	max-width: 25px;
 }
 
+ul.sidebar-nav {
+	margin: 0px;
+	padding: 0px;
+}
+
 ul.sidebar-nav li {
 	list-style-type: none;
 	color: #FFFFFF;
 	padding: 3px;
 	border-bottom: solid 1px grey;
-	padding: 3px;
 }
 
 ul.sidebar-nav li:hover {
@@ -55,13 +59,14 @@ ul.sidebar-nav li a:hover {
 }
 
 .list-nav-bar {
-	margin-top: 100px;
+	margin-top: 20px;
+	margin-left: 0px;
 }
 
 .document-div {
 	border: solid 1px grey;
 	border-radius: 10px;
-	margin-top: 50px;
+	margin-top: 20px;
 	padding-bottom: 10px;
 }
 
@@ -77,11 +82,11 @@ ul.sidebar-nav li a:hover {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	width: 60%;
+	width: 100%;
 }
 
 #sortable li {
-	margin: 10px 5px 10px 5px;
+	margin: 5px 15px 5px 15px;
 	padding: 0.4em;
 	padding-left: 1.5em;
 	cursor: move;
@@ -93,12 +98,12 @@ ul.sidebar-nav li a:hover {
 }
 
 .wrapper-div {
-	border: solid 2px grey;
+	border: solid 1px grey;
 	border-radius: 10px;
-	min-height: 200px;
-	max-height: 250px;
+	min-height: 300px;
+	max-height: 400px;
 	overflow: auto;
-	margin: 20px;
+	margin: 0px;
 }
 
 .document-div img {
@@ -140,6 +145,15 @@ input[type="search"], select[name*="_length"] {
 		.15s;
 	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+
+#tableContent{
+	background: rgba(223, 240, 216, 0.67);
+    padding: 10px;
+}
+
 div .dataTables_length label,div .dataTables_filter label{
 	font-weight: normal;
+}
+.margin-right-15{
+	margin-right: 15px !important;
 }

@@ -9,26 +9,19 @@
 	<jsp:include page="header.jsp" />
 
 	<div class="container">
-		<h1>API Documentation</h1>
-		<div class="row">
-			<div class="col-sm-3 list-nav-bar">
-				<ul class="sidebar-nav">
-					<c:forEach var="document" items="${apiDocumentList}">
-						<li><a href="#" id="${document.id}" class="document-list">
-								<c:out value="${document.documentName}"></c:out>
-						</a></li>
-					</c:forEach>
+		<div class="col-lg-3 list-nav-bar">
+			<ul class="sidebar-nav">
+				<c:forEach var="document" items="${apiDocumentList}">
+					<li><a href="#" id="${document.id}" class="document-list">
+							<c:out value="${document.documentName}"></c:out>
+					</a></li>
+				</c:forEach>
 
-				</ul>
-			</div>
-
-
-			<div class="col-sm-9 document-div">&nbsp;</div>
+			</ul>
 		</div>
 
 
-
-
+		<div class="col-lg-9 document-div">&nbsp;</div>
 	</div>
 
 

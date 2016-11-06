@@ -70,8 +70,8 @@ public class APIDocumentDAOImpl implements IAPIDocumentDAO {
 	public List<APIDocument> readPerApplication(Integer apiBundleId) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<APIDocument> query = cb.createQuery(APIDocument.class);
-		Root<APIDocument> rootEntry = query.from(APIDocument.class);
-		query.where(cb.equal(rootEntry.get("API_BOX_ID"), apiBundleId));
+		Root<APIDocument> apiDocument = query.from(APIDocument.class);
+		query.where(cb.equal(apiDocument.get("bundleId"), apiBundleId));
 		TypedQuery<APIDocument> allQuery = em.createQuery(query);
 		return allQuery.getResultList();
 	}

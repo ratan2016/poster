@@ -19,7 +19,7 @@
 	<table class="table table-responsive table-striped"
 		id="applicationTable">
 		<thead>
-			<th class="select-radio">Select</th>
+			<th class="select-radio">&nbsp;&nbsp;&nbsp;</th>
 			<th>Bundle Name</th>
 			<th>Bundle Description</th>
 

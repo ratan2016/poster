@@ -17,7 +17,7 @@
 <form role="form">
 	<table class="table table-responsive table-striped" id="apiDocumentTable">
 		<thead>
-			<th class="select-radio">Select</th>
+			<th class="select-radio">&nbsp;&nbsp;&nbsp;</th>
 			<th>Document Name</th>
 			<th>Document Description</th>
 			<th>API Bundle Name</th>

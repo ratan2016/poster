@@ -1,18 +1,14 @@
-.head-icon {
-	padding-right: 50px;
-	Font-size: 80px;
-	font-style: italic;
-	font-weight: 900;
-	Text-shadow: 4px 4px 0px #f0ad4e;
-}
-
-.container-fluid {
-	min-height: 70px;
-	padding-top: 30px;
-}
-
 .error-empty {
 	border-color: red;
+}
+
+.documentHead hr {
+	margin-top:0px;
+	margin-left:-25px;
+	margin-right:-25px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid rgba(0, 136, 204, 0.21);
 }
 
 .select-radio {
@@ -28,7 +24,7 @@ ul.sidebar-nav li {
 	list-style-type: none;
 	color: #FFFFFF;
 	padding: 3px;
-	border-bottom: solid 1px grey;
+	border-bottom: solid 1px #0088cc;
 }
 
 ul.sidebar-nav li:hover {
@@ -36,26 +32,54 @@ ul.sidebar-nav li:hover {
 	background-color: #0088cc;
 }
 
-ul.sidebar-nav li:hover a {
+ul.sidebar-nav li:hover{
 	color: #ffffff;
-	background-color: #0088cc;
+	background: -moz-linear-gradient(179deg, #ffffff 0%, #ffffff 1%, #72BDE2 55%,
+		#0088cc 99%); /* ff3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(1%, #0088cc),
+		color-stop(45%, #72BDE2), color-stop(99%, #ffffff),
+		color-stop(100%, #ffffff)); /* safari4+,chrome */
+	background: -webkit-linear-gradient(179deg, #ffffff 0%, #ffffff 1%, #72BDE2 55%,
+		#0088cc 99%); /* safari5.1+,chrome10+ */
+	background: -o-linear-gradient(179deg, #ffffff 0%, #ffffff 1%, #72BDE2 55%, #0088cc
+		99%); /* opera 11.10+ */
+	background: -ms-linear-gradient(179deg, #ffffff 0%, #ffffff 1%, #72BDE2 55%, #0088cc
+		99%); /* ie10+ */
+	background: linear-gradient(271deg, #ffffff 0%, #ffffff 1%, #72BDE2 55%, #0088cc 99%
+		); /* w3c */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0088cc',
+		endColorstr='#ffffff', GradientType=1); /* ie6-9 */
 }
 
 ul.sidebar-nav li.active {
 	color: #ffffff;
-	background-color: #0088cc;
+	background: -moz-linear-gradient(179deg, #ffffff 0%, #ffffff 1%, #72BDE2 55%,
+		#0088cc 99%); /* ff3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(1%, #0088cc),
+		color-stop(45%, #72BDE2), color-stop(99%, #ffffff),
+		color-stop(100%, #ffffff)); /* safari4+,chrome */
+	background: -webkit-linear-gradient(179deg, #ffffff 0%, #ffffff 1%, #72BDE2 55%,
+		#0088cc 99%); /* safari5.1+,chrome10+ */
+	background: -o-linear-gradient(179deg, #ffffff 0%, #ffffff 1%, #72BDE2 55%, #0088cc
+		99%); /* opera 11.10+ */
+	background: -ms-linear-gradient(179deg, #ffffff 0%, #ffffff 1%, #72BDE2 55%, #0088cc
+		99%); /* ie10+ */
+	background: linear-gradient(271deg, #ffffff 0%, #ffffff 1%, #72BDE2 55%, #0088cc 99%
+		); /* w3c */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0088cc',
+		endColorstr='#ffffff', GradientType=1); /* ie6-9 */
 }
 
 ul.sidebar-nav li.active a {
 	color: #ffffff;
-	background-color: #0088cc;
 	text-decoration: none;
-	min-width:
+	background: transparent;
 }
 
 ul.sidebar-nav li a:hover {
 	color: #ffffff;
 	text-decoration: none;
+	background: transparent;
 }
 
 .list-nav-bar {
@@ -64,8 +88,14 @@ ul.sidebar-nav li a:hover {
 }
 
 .document-div {
-	border: solid 1px grey;
-	border-radius: 10px;
+	background: -moz-linear-gradient(top, #FFF 0%, #e5e5e5 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f5f5), color-stop(100%,#e5e5e5));
+    background: -webkit-linear-gradient(top, #FFF 0%,#e5e5e5 100%);
+    background: -o-linear-gradient(top, #FFF 0%,#e5e5e5 100%);
+    background: -ms-linear-gradient(top, #FFFFFF 0%,#e5e5e5 100%);
+    background: linear-gradient(to bottom, #FFF 0%,#e5e5e5 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#e5e5e5',GradientType=0 );
+    border:1px solid rgba(226, 223, 223, 0.85);;
 	margin-top: 20px;
 	padding-bottom: 10px;
 }
@@ -111,11 +141,11 @@ ul.sidebar-nav li a:hover {
 	margin-left: auto;
 }
 
-.document-div h3{
-	color:#0088cc;
+.document-div h3 {
+	color: #0088cc;
 }
 
-.section-head{
+.section-head {
 	color: #3C763D;
 }
 
@@ -146,14 +176,28 @@ input[type="search"], select[name*="_length"] {
 	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-#tableContent{
+#tableContent {
 	background: rgba(223, 240, 216, 0.67);
-    padding: 10px;
+	padding: 10px;
 }
 
-div .dataTables_length label,div .dataTables_filter label{
+div .dataTables_length label, div .dataTables_filter label {
 	font-weight: normal;
 }
-.margin-right-15{
+
+.margin-right-15 {
 	margin-right: 15px !important;
+}
+
+td {
+	vertical-align: middle !important;
+}
+
+.small {
+	font-size: small !important;
+	margin-top: 10px;
+}
+
+.pad-r-10 {
+	padding-right: 10px !important;
 }

@@ -1,0 +1,333 @@
+.container-fluid {
+	min-height: 70px;
+}
+
+.navbar-default{
+	border: none;
+}
+.navbar-default .navbar-brand {
+     color: #FFF; 
+}
+.navbar-default .navbar-brand:hover {
+     color: #e6dede; 
+}
+.head-icon {
+	Font-size: 50px;
+	font-style: italic;
+	font-weight: 900;
+	Text-shadow: 4px 4px 0px #f0ad4e;
+}
+
+a:active {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #DDDDDD;
+	text-decoration: none;
+}
+
+.wrapper {
+	text-align: center;
+	display: block;
+	width: 100%;
+	padding: 0;
+	position: relative;
+	height: 100%;
+	margin: 0 auto;
+}
+
+
+
+.clear {
+	clear: both;
+}
+
+
+
+/* MASTHEAD */
+.mhButtonContainer {
+	float: right;
+	display: block;
+}
+
+.masthead {
+	padding-bottom: 6px;
+	background-image: url("../images/offer_bar_bg.png");
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 999;
+}
+
+.mastheadContainer {
+	width:100%;
+}
+
+#menuBtn {
+	display: none;
+	background-repeat: no-repeat;
+	background-image: url('../images/menuBtn.png');
+	float: left;
+	height: 35px;
+	width: 36px;
+	border: 1px solid #c8c8c8;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 21px 10px 0 0;
+}
+
+#menuBtn.opened {
+	background-color: #009bbb;
+}
+
+.masthead .nav {
+	padding-top:23px;
+	float: left;
+	display: block;
+}
+
+.nav.active a {
+	color: #009bbb;
+}
+
+.nav a {
+	color: #fff;
+	display: block;
+	font-size: 16px;
+	letter-spacing: 1px;
+	padding: 12px 33px;
+	transition: color 0.2s ease-in 0s;
+}
+
+.nav a.rightSide {
+	padding-right: 20px;
+}
+
+.nav a:hover {
+	color: #009bbb;
+}
+
+.blue {
+	background-color: #002562;
+}
+
+.right {
+	margin-left: 15px;
+}
+
+.cta.active a {
+	color: #009bbb;
+}
+
+.teal {
+	background-color: #009bbb;
+}
+
+.cta {
+	display: inline-block;
+}
+
+.cta a:hover {
+	/* background-color: #002562; */
+	background-color: #009bbb;
+	color: #fff;
+}
+
+.cta a {
+	color: #fff;
+	display: block;
+	font-size: 16px;
+	/* padding: 12px 33px 10px;*/
+	transition: all 0.2s ease-in 0s;
+}
+
+.masthead .cta a, .heroContent h2, .heroContent h1, .hero2Content h4,
+	.hero2Content p, .stripeContent h4, .stripeContent p, .hero3 h4, .hero3 p,
+	.nav a {
+	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.75);
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=120, Color='#000000')";
+}
+
+.divider {
+	background-color: #fff;
+	float: left;
+	height: 20px;
+	margin-top: 35px;
+	width: 1px;
+}
+
+.centerArrow {
+	width: 43px;
+	margin: 0 auto;
+}
+
+.tealDivider {
+	padding: 36px 0;
+}
+
+.tealDivider h3 {
+	line-height: 40px;
+	font-family: 'book', Arial, Helvetica, Verdana, Sans-serif;
+	font-size: 33px;
+	margin: 0;
+	font-weight: 100;
+}
+
+.iconContent {
+	margin: 50px 0 80px;
+}
+
+.iconContent img {
+	width: 380px;
+	height: 240px;
+}
+
+.iconContent.middle p {
+	padding: 0;
+}
+
+.iconContent p {
+	color: #fff;
+	font-size: 23px;
+	font-weight: 100;
+	text-align: left;
+	margin-top: 4px;
+	padding: 0 5px 0 25px;
+}
+
+.navbar {
+	BORDER-LEFT: 0px;
+	MIN-HEIGHT: 64px;
+	BACKGROUND: #fff;
+	HEIGHT: 64px;
+	BORDER-TOP: 0px;
+	BORDER-RIGHT: 0px;
+	border-radius: 0
+}
+
+.navbar-header {
+	MARGIN-TOP: 11px
+}
+
+.navbar-toggle {
+	MARGIN-TOP: 3px
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+	.mhButtonContainer {
+		display: block;
+		float: none;
+		margin: 0 auto;
+		width: 400px;
+	}
+	.masthead .cta.teal {
+		margin-left: 0;
+		margin-right: 15px;
+	}
+	.masthead .nav {
+		float: right;
+		display: block;
+		margin: 0;
+		border-top: 1px solid #597199;
+	}
+	.logoContainer {
+		display: block;
+		float: left;
+		height: 48px;
+		margin: 22px auto 0;
+		margin-top:5px;
+		width: 185px;
+	}
+	.nav a {
+		padding: 12px 32px;
+	}
+	.nav a.rightSide {
+		padding-right: 0;
+	}
+	.divider {
+		background-color: #fff;
+		float: right;
+		height: 20px;
+		margin-top: 11px;
+		width: 1px;
+	}
+	.masthead {
+		padding-bottom: 6px;
+	}
+	.heroContent h2, .heroContent h1 {
+		line-height: 75px;
+		padding-top: 130px;
+	}
+	#menuBtn {
+		display: block;
+		float: right;
+		margin-right: 20px;
+	}
+	.mhButtonContainer {
+		display: none;
+		width: auto;
+		clear: both;
+		padding: 10px 20px 0;
+	}
+	.divider {
+		display: none;
+	}
+	.masthead .nav {
+		float: none;
+	}
+	
+	.nav a {
+		padding: 15px 0;
+		text-align: center;
+		font-size: 21px;
+	}
+	
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	.mastheadContainer {
+		display: block;
+		width: auto;
+	}
+	.logoContainer {
+		margin-left: 20px;
+	}
+	#menuBtn {
+		margin-right: 20px;
+	}
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+	.logoContainer {
+		background-size: 174px auto;
+	}
+	.mastheadContainer {
+		display: block;
+		width: auto;
+	}
+	.mhButtonContainer {
+		margin-top: 5px;
+		width: auto;
+	}
+	.cta {
+		text-align: center;
+	}
+	.tealDivider {
+		height: 117px;
+	}
+	.tealDivider h3 {
+		font-size: 28px;
+		line-height: 39px;
+		padding-top: 20px;
+	}
+	.head-icon {
+	Font-size: 40px;
+}
+}
